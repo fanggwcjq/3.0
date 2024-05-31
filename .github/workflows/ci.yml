@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps: # <--- 正确的缩进
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -14,6 +14,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14'
+
+      - name: Change to the correct directory
+        run: cd path/to/your/project
 
       - name: Install dependencies
         run: npm install
