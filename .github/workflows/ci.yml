@@ -1,12 +1,9 @@
-name: CI
+name: Java CI/CD
 
 on:
   push:
     branches:
-      - master
-  pull_request:
-    branches:
-      - master
+      - master  # 修改为你的主分支名称
 
 jobs:
   build:
@@ -15,17 +12,21 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+      
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
       with:
-        node-version: '14'
+        java-version: '11'
+        distribution: 'adopt'  # 添加 distribution 参数
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: List files for debugging
-      run: ls -al
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
 
     - name: Run tests
-      run: npm test
+      run: mvn -B test --file pom.xml
+
+    - name: Deploy to production
+      if: github.ref == 'refs/heads/main'  # 可选，只有在主分支推送时才部署
+      run: |
+        # 在这里添加部署到生产环境的命令，例如使用FTP、SSH或者其他部署工具
+        # 示例：scp target/*.jar user@example.com:/path/to/deploy
