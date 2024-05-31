@@ -1,4 +1,4 @@
-name: Java CI/CD
+name: CI
 
 on:
   push:
@@ -26,7 +26,4 @@ jobs:
       run: mvn -B test --file pom.xml
 
     - name: Deploy to production
-      if: github.ref == 'refs/heads/main'  # 可选，只有在主分支推送时才部署
-      run: |
-        # 在这里添加部署到生产环境的命令，例如使用FTP、SSH或者其他部署工具
-        # 示例：scp target/*.jar user@example.com:/path/to/deploy
+      
