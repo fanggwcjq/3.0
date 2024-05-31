@@ -15,11 +15,10 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Change to the correct directory
-        run: cd path/to/your/project
-
       - name: Install dependencies
         run: npm install
+        working-directory: D:\code\guangyingshipin  # 修改为您的项目路径
 
       - name: Run tests
         run: npm test
+        working-directory: D:\code\guangyingshipin  # 修改为您的项目路径
