@@ -17,10 +17,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: 3.0/.github/workflows
-  # 修改为您的项目路径
+        working-directory: 3.0/.github/workflows # 修改为您的项目路径
 
       - name: Run tests
         run: npm test
-        working-directory: 3.0/.github/workflows
-  # 修改为您的项目路径
+        working-directory: 3.0/.github/workflows  # 修改为您的项目路径
